@@ -1,0 +1,20 @@
+void setup() {
+  Serial.begin(9600); // open serial port, set the baud rate as 9600 bps
+  pinMode(LED_BUILTIN,OUTPUT);
+}
+void loop() {
+  int val;
+  val = analogRead(0); //connect sensor to Analog 0
+  Serial.println(val); //print the value to serial port
+  delay(1000);            
+  if  (val < 100){     // Check whether the soil moisture is less than the expected and Blink 
+  digitalWrite(LED_BUILTIN,HIGH);
+  delay(500);          // Bl
+  digitalWrite(LED_BUILTIN,LOW);
+  delay(500);
+  }
+  if (val >200){       // Check whether the soil moisture is greater than expected and keep it On for two seconds
+  digitalWrite(LED_BUILTIN,HIGH);
+  delay(2000);
+  }
+}
